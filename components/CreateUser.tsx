@@ -1,23 +1,32 @@
 "use client";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "./ui/button";
-import { Form, FormControl } from "./ui/form";
 import { Input } from "./ui/input";
 
+type Inputs = {
+  name: string
+  email: string
+}
+
 const CreateUser = () => {
-  const form = useForm();
-  const onSubmit = (values: object) => {
-    console.log();
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>()
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data)
+  }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormControl>
-          <Input placeholder="Enter your name" name="name" width={100} />
-          <Input placeholder="Enter your email" name="email" width={100} />
-        </FormControl>
-        <Button type="submit">Submit</Button>
+        <div className="flex w-full max-w-sm items-center space-x-2">
+          <Input type="text" placeholder="Name" name="name" />
+          <Input type="email" placeholder="Email" name="email" />
+          <Button type="submit">Subscribe</Button>
+        </div>
       </form>
     </Form>
   );

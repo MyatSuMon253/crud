@@ -3,9 +3,7 @@ import { NextResponse } from 'next/server';
  
 export async function GET(request: Request, response: Response) {
   const res = await prisma.user.findMany();
-  const users = await JSON.stringify(res);
-  console.log(users)
-  return NextResponse.json({users}, {status: 200})
+  return NextResponse.json({users: res}, {status: 200})
 }
 
 export async function POST(request: Request) {
