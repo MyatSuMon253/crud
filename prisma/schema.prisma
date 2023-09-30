@@ -8,22 +8,22 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String? 
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  name  String
 
-  @@index([id]) 
-  @@map("users") 
+  @@index([id])
+  @@map("users")
 }
 
 model Post {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   title     String
-  content   String?
-  published Boolean @default(false)
+  content   String
+  published Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([createdAt]) // orderby createdAt
-  @@map("posts") // map to db table
+  @@index([createdAt])
+  @@map("posts")
 }
