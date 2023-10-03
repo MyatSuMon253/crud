@@ -1,5 +1,6 @@
 import { prisma } from '@/app/modules/db';
 import { NextRequest, NextResponse } from 'next/server';
+import schema from './schema';
  
 export async function GET(request: NextRequest) {
   const users = await prisma.user.findMany();
@@ -9,9 +10,9 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const body = await request.json();
 
-  // const validation = schema.safeParse(body)
-  // if (!validation.success) 
-  //   return NextResponse.json(validation.error.errors);
+  const validation = schema.safeParse(body)
+  if (!validation.success) 
+    return NextResponse.json(validation.error.errors);
 
   const user = await prisma.user.create({
     data: {
