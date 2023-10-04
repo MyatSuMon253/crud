@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { AuthOptions } from "./api/auth/[...nextauth]/route";
 
@@ -21,4 +22,12 @@ export default async function Home() {
       /> */}
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const product = await fetch('');
+  return {
+    title: 'product.title',
+    description: "..."
+  }
 }
