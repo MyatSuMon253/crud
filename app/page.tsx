@@ -1,6 +1,4 @@
 import { getServerSession } from "next-auth";
-import Image from "next/image";
-import Link from "next/link";
 import { AuthOptions } from "./api/auth/[...nextauth]/route";
 
 export default async function Home() {
@@ -8,9 +6,11 @@ export default async function Home() {
 
   return (
     <main className="relative h-screen">
-      <h1>Hello {session && <span>{session.user!.name}</span>}</h1>
-      <Link href="/users">Users</Link>
-      <Image
+      <h1>
+        Hello {session && <span>{session.user!.name}</span>}
+      </h1>
+
+      {/* <Image
         src="https://bit.ly/react-cover"
         alt="project photo"
         fill
@@ -18,7 +18,7 @@ export default async function Home() {
         sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
         quality={75}
         priority
-      />
+      /> */}
     </main>
   );
 }
