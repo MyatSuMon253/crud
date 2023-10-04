@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import GoogleAnalyticsScript from "./GoogleAnalyticsScript";
 import NavBar from "./NavBar";
 import AuthProvider from "./auth/Provider";
 import "./globals.css";
@@ -17,7 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-thmem="winter">
+      <GoogleAnalyticsScript />
       <body className={inter.className}>
         <AuthProvider>
           <NavBar />
