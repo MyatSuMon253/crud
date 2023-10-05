@@ -20,15 +20,15 @@ const CreateUser = () => {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+    <form >
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         <div className="flex w-full max-w-sm items-center space-x-2">
           <Input type="text" placeholder="Name" name="name" />
           <Input type="email" placeholder="Email" name="email" />
           <Button type="submit">Subscribe</Button>
         </div>
       </form>
-    </Form>
+    </form>
   );
 };
 

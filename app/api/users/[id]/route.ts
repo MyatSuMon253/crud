@@ -7,7 +7,7 @@ export async function GET(
 ) {
   const user = await prisma.user.findUnique({
     where: {
-      id: parseInt(params.id),
+      id: params.id,
     },
   });
 
@@ -25,7 +25,7 @@ export async function PUT(
   const body = await request.json();
   const user = await prisma.user.findUnique({
     where: {
-      id: parseInt(params.id),
+      id: params.id,
     },
   });
 
@@ -34,7 +34,7 @@ export async function PUT(
   }
 
   const updatedUser = await prisma.user.update({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
     data: { name: body.name, email: body.email },
   });
 
@@ -47,7 +47,7 @@ export async function DELETE(
 ) {
   const user = await prisma.user.findUnique({
     where: {
-      id: parseInt(params.id),
+      id: params.id,
     },
   });
 
@@ -56,7 +56,7 @@ export async function DELETE(
   }
 
   const deletedUser = await prisma.user.delete({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
   });
 
   return NextResponse.json(deletedUser);
